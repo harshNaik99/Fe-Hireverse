@@ -1,0 +1,156 @@
+// /data/recruiters.ts
+export type RecruiterRole = "HR" | "FreelanceHR";
+
+export type Recruiter = {
+  id: string;
+  name: string;
+  role: RecruiterRole;
+  companyName?: string;
+  specializations: string[];
+  rating: number; // 0.0 - 5.0 (halves allowed)
+  totalHires: number;
+  profilePicture: string;
+  location: string;
+  verified: boolean;
+};
+
+export const recruiters: Recruiter[] = [
+  {
+    id: "r1",
+    name: "Aisha Verma",
+    role: "HR",
+    companyName: "Nexora Technologies",
+    specializations: ["Software Hiring", "Campus Hiring"],
+    rating: 4.8,
+    totalHires: 320,
+    profilePicture: "https://api.dicebear.com/8.x/avataaars/svg?seed=aisha",
+    location: "Bengaluru, India",
+    verified: true,
+  },
+  {
+    id: "r2",
+    name: "Rohan Malik",
+    role: "FreelanceHR",
+    specializations: ["Product", "PM Hiring"],
+    rating: 4.6,
+    totalHires: 145,
+    profilePicture: "https://api.dicebear.com/8.x/thumbs/svg?seed=rohan",
+    location: "Mumbai, India",
+    verified: true,
+  },
+  {
+    id: "r3",
+    name: "Priya Singh",
+    role: "HR",
+    companyName: "FinEdge Capital",
+    specializations: ["Finance", "Data Science"],
+    rating: 4.9,
+    totalHires: 410,
+    profilePicture: "https://api.dicebear.com/8.x/initials/svg?seed=priya",
+    location: "Hyderabad, India",
+    verified: true,
+  },
+  {
+    id: "r4",
+    name: "Emily Carter",
+    role: "FreelanceHR",
+    specializations: ["Design", "UX Hiring"],
+    rating: 4.4,
+    totalHires: 78,
+    profilePicture: "https://api.dicebear.com/8.x/fun-emoji/svg?seed=emily",
+    location: "Remote (US)",
+    verified: false,
+  },
+  {
+    id: "r5",
+    name: "Sandeep Rao",
+    role: "HR",
+    companyName: "CloudSphere",
+    specializations: ["DevOps", "Cloud"],
+    rating: 4.7,
+    totalHires: 210,
+    profilePicture: "https://api.dicebear.com/8.x/adventurer/svg?seed=sandeep",
+    location: "Pune, India",
+    verified: true,
+  },
+  {
+    id: "r6",
+    name: "Maya Kapoor",
+    role: "FreelanceHR",
+    specializations: ["Content", "Growth"],
+    rating: 4.3,
+    totalHires: 95,
+    profilePicture: "https://api.dicebear.com/8.x/gridy/svg?seed=maya",
+    location: "Delhi, India",
+    verified: false,
+  },
+  {
+    id: "r7",
+    name: "Omar Alvi",
+    role: "HR",
+    companyName: "PixelPeak",
+    specializations: ["Design", "Frontend"],
+    rating: 4.5,
+    totalHires: 160,
+    profilePicture: "https://api.dicebear.com/8.x/personas/svg?seed=omar",
+    location: "Chennai, India",
+    verified: true,
+  },
+  {
+    id: "r8",
+    name: "Leila Haddad",
+    role: "FreelanceHR",
+    specializations: ["Cybersecurity", "Compliance"],
+    rating: 4.7,
+    totalHires: 130,
+    profilePicture: "https://api.dicebear.com/8.x/identicon/svg?seed=leila",
+    location: "Remote (EU)",
+    verified: true,
+  },
+  {
+    id: "r9",
+    name: "Arjun Patel",
+    role: "HR",
+    companyName: "DataFlow Labs",
+    specializations: ["Data Science", "ML Hiring"],
+    rating: 4.6,
+    totalHires: 275,
+    profilePicture: "https://api.dicebear.com/8.x/micah/svg?seed=arjun",
+    location: "Bengaluru, India",
+    verified: true,
+  },
+  {
+    id: "r10",
+    name: "Selina Wang",
+    role: "FreelanceHR",
+    specializations: ["Product", "Strategy"],
+    rating: 4.5,
+    totalHires: 98,
+    profilePicture: "https://api.dicebear.com/8.x/croodles/svg?seed=selina",
+    location: "Remote (APAC)",
+    verified: false,
+  },
+  {
+    id: "r11",
+    name: "Vikram Joshi",
+    role: "HR",
+    companyName: "BrightDesk",
+    specializations: ["SaaS", "Leadership Hiring"],
+    rating: 4.8,
+    totalHires: 340,
+    profilePicture: "https://api.dicebear.com/8.x/identicon/svg?seed=vikram",
+    location: "Ahmedabad, India",
+    verified: true,
+  },
+  {
+    id: "r12",
+    name: "Nora Svensson",
+    role: "FreelanceHR",
+    specializations: ["Operations", "Scaling"],
+    rating: 4.2,
+    totalHires: 60,
+    profilePicture: "https://api.dicebear.com/8.x/bottts/svg?seed=nora",
+    location: "Stockholm, Sweden",
+    verified: false,
+  },
+];
