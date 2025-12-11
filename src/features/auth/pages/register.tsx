@@ -7,7 +7,7 @@ import { Mail, Lock, User, Eye, EyeOff, Briefcase, Heart, ArrowRight, MapPin, Br
 import { useMutation } from "@tanstack/react-query";
 import { registerAPI } from "../../../api/auth.api";
 import { useAuthStore } from "../../../context/authStore"
-import { setAccessToken } from "../../../utils/tokenmanager"
+import { setAccessToken } from "../../../utils/tokenManager"
 
 export default function Register() {
   const [userType, setUserType] = useState<"hr" | "candidate">("candidate")

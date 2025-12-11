@@ -20,7 +20,7 @@ import { Button } from "../../../components/ui/button";
 
 import { useFeaturedJobs } from "../hooks/useFeaturedJobs";
 import { useJobSearchSuggest } from "../hooks/useJobSearchSuggest";
-import { JobCardFeatured } from "../../../components/ui/jobCardFeatured";
+import JobCardFeatured from "../components/jobCardFeatured/JobCardFeatured";
 import { HERO_STATS, HERO_TAGLINE, JOBS_PAGE_URL } from "./const";
 import { Link } from "@tanstack/react-router";
 import FilterTags from "../components/FilterTags/FilterTags";

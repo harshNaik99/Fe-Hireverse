@@ -5,7 +5,6 @@ import { Briefcase, LogOut, User, Settings } from "lucide-react";
 import { useAuthStore } from "../../context/authStore";
 import { router } from "../../main";
 import { useLogout } from "../../features/auth/hooks/useLogout";
-import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
   const { user } = useAuthStore();
@@ -16,47 +15,16 @@ export default function Navbar() {
   /** -------------------------
    *  STICKY + SCROLL HIDE
    * ------------------------*/
-  const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-
-      // Hide navbar when scrolling down
-      if (currentY > lastScrollY.current && currentY > 80) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-
-      lastScrollY.current = currentY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <motion.nav
-      animate={{
-        opacity: hidden ? 0 : 1,
-        y: hidden ? -55 : 0,
-      }}
-      transition={{
-        duration: 0.45,
-        ease: "easeInOut",
-      }}
+    <nav
       className="
-        sticky top-0 z-[9999] w-full
-        backdrop-blur-xl
-        bg-white/90
-        border-b border-gray-200/40
-        shadow-[0_2px_16px_rgba(0,0,0,0.06)]
-        transition-all duration-300
-        font-[Poppins]
+        sticky top-0 z-42 w-full
+        backdrop-blur-xl bg-white/90
+        border-b border-gray-200
+        shadow-md
       "
     >
+
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* ========================== LEFT: LOGO + NAV LINKS ========================== */}
@@ -167,6 +135,6 @@ export default function Navbar() {
           )}
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

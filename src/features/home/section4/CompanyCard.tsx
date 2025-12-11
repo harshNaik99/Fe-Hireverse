@@ -10,6 +10,7 @@ export type Company = {
   rating: number;
   reviews: number;
   openJobs: number;
+
 };
 
 export function CompanyCard({ company }: { company: Company }) {
@@ -20,7 +21,7 @@ export function CompanyCard({ company }: { company: Company }) {
 
   const viewJobs = (e: React.MouseEvent) => {
     e.stopPropagation();
-    navigate({ to: "/jobs", search: { companyId: company.id } });
+    navigate({ to: "/company", search: { id : company.id } });
   };
 
   return (

@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query"
 import { fetchJobList } from "../../../api/jobs.api"
-import type { Job } from "../../../components/ui/jobCardFeatured/types"
+import type { Job } from "../../home/components/jobCardFeatured/types"
 
 export type JobListParams = {
   page?: number
@@ -16,8 +16,8 @@ export type JobListParams = {
   applyType?: string
   experienceLevel?: string
   sort?: string
-  minSalary? : string
-  maxSalary? :string
+  minSalary? : number
+  maxSalary? : number
 }
 
 export function useJobList(params?: JobListParams) {

@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { JobCard } from "../../../../components/ui/jobCardFeatured/JobCard";
+import JobCard from "../../../home/components/jobCardFeatured/JobCard/JobCard";
 import { Briefcase } from "lucide-react";
 import useJobListGrid from "./useJobListGrid"
 import type { JobListGridProps } from "./types";
 import { containerVariants, itemVariants } from "./consts";
+import { JobCardSkeleton } from "../../../home/components/jobCardFeatured/JobCardSkeleton/JobCardSkeleton";
 
 export default function JobListGrid({
   jobs,
@@ -15,7 +16,6 @@ export default function JobListGrid({
 }: JobListGridProps) {
   const {
     hasJobs,
-    shimmerCount,
     emptyHeader,
     emptyMessage,
   } = useJobListGrid(jobs, isLoading);
@@ -23,24 +23,29 @@ export default function JobListGrid({
   /** LOADING */
   if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {[...Array(shimmerCount)].map((_, i) => (
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="w-full space-y-6"
+      >
+        {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.08, duration: 0.4 }}
-            className="h-64 bg-muted/50 rounded-2xl animate-pulse border border-border/40"
-          />
+            variants={itemVariants}
+            className="w-full"
+          >
+            <JobCardSkeleton />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     );
   }
 
   /** EMPTY */
   if (!hasJobs) {
     return (
-      <div className="flex flex-col items-center justify-center h-96 text-center">
+      <div className="flex flex-col items-center justify-center h-96 text-center px-4">
         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-6 shadow-lg">
           <Briefcase className="w-10 h-10 text-primary" />
         </div>
@@ -56,32 +61,21 @@ export default function JobListGrid({
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      className="
-        
-        grid grid-cols-1 sm:grid-cols-2
-        gap-y-4 gap-x-2
-        justify-between
-        mt-6 mb-6 
-      "
+      className="w-full space-y-6 max-w-2xl"
     >
-      {jobs!.map((job, index) => (
-  <motion.div
-    key={job._id || job.slug}
-    variants={itemVariants}
-    className={`
-      
-      ${index % 2 === 0 ? "pl-64" : "pr-64"}
-    `}
-  >
-    <JobCard
-      job={job}
-      onJobSelect={onJobSelect}
-      onApply={onApply}
-    />
-  </motion.div>
-))}
-
+      {jobs!.filter(Boolean).map((job) => (
+        <motion.div
+          key={job._id || job.slug}
+          variants={itemVariants}
+          className="w-full"
+        >
+          <JobCard
+            job={job}
+            onJobSelect={onJobSelect}
+            onApply={onApply}
+          />
+        </motion.div>
+      ))}
     </motion.div>
   )
-  
 }

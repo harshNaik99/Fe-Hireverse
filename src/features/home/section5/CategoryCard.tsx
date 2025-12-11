@@ -39,8 +39,8 @@ export default function CategoryCard({ category }: { category: CategoryItem }) {
 
   const onClick = () =>
     navigate({
-      to: "/jobs",
-      search: { category: category.name },
+      to: "/",
+      search: { categoryId: category.id },
     });
 
   return (

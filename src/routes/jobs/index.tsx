@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router"
 import Jobs from "../../features/jobs/pages/Jobs"
 
 export const Route = createFileRoute("/jobs/")({
-  component: Jobs,
+  component: JobsPage,
 
   validateSearch: (search) => {
     return {
@@ -26,15 +26,20 @@ export const Route = createFileRoute("/jobs/")({
           ? search.sort
           : undefined,
 
-      minSalary:
-        typeof search.minSalary === "string"
-          ? Number(search.minSalary)
-          : undefined,
-
-      maxSalary:
-        typeof search.maxSalary === "string"
-          ? Number(search.maxSalary)
-          : undefined,
+          minSalary:
+          typeof search.minSalary === "string"
+            ? Number(search.minSalary)
+            : typeof search.minSalary === "number"
+            ? search.minSalary
+            : undefined,
+        
+        maxSalary:
+          typeof search.maxSalary === "string"
+            ? Number(search.maxSalary)
+            : typeof search.maxSalary === "number"
+            ? search.maxSalary
+            : undefined,
+        
     } as {
       page?: number
       limit?: number
@@ -46,9 +51,18 @@ export const Route = createFileRoute("/jobs/")({
       applyType? :string
       experienceLevel? : string
       sort? : string
-      minSalary? : string
-      maxSalary?:string
+      minSalary? : number
+      maxSalary?: number
     }
   }
   
 })
+
+function JobsPage() {
+  return (
+    <>  
+    
+    <Jobs />
+    </>
+  )
+}

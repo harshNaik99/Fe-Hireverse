@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import type { Job, UseJobCardResult } from "./types"
 import { BRAND_COLORS, DATE_LABEL_RECENT, DATE_LABEL_TODAY, DATE_LABEL_YESTERDAY, DEFAULT_JOB_TYPE, DEFAULT_WORK_MODE, NO_SALARY_TEXT, PLACEHOLDER_LOGO, UNKNOWN_COMPANY } from "./consts"
+import type { Job, UseJobCardResult } from "./types"
+
 
 // --- Helper: initials ---
 export const getCompanyInitials = (companyName: string): string => {

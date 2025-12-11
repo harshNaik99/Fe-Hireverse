@@ -1,6 +1,6 @@
 "use client"
 
-import type { Job } from "../../../../components/ui/jobCardFeatured/types";
+import type { Job } from "../../../home/components/jobCardFeatured/types";
 import type { UseJobListGridResult } from "./types"
 import {
   SHIMMER_COUNT,

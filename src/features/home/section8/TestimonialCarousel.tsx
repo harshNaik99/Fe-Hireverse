@@ -1,8 +1,6 @@
 // components/TestimonialCarousel.tsx
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import  TestimonialCard  from './TestimonialCard';
 import { type Testimonial } from '../../../lib/testimonials';
 
@@ -13,7 +11,7 @@ interface TestimonialCarouselProps {
 
 export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   testimonials,
-  autoSlideInterval = 3000,
+  //autoSlideInterval = 3000,
 }) => {
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -31,7 +29,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
     const scroll = (timestamp: number) => {
       if (!lastTimestamp) lastTimestamp = timestamp;
-      const delta = timestamp - lastTimestamp;
+      //const delta = timestamp - lastTimestamp;
 
       if (scrollContainer) {
         scrollContainer.scrollLeft += scrollSpeed;
@@ -56,19 +54,19 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     };
   }, [isPaused]);
 
-  const handlePauseToggle = () => {
-    setIsPaused(!isPaused);
-  };
+  // const handlePauseToggle = () => {
+  //   setIsPaused(!isPaused);
+  // };
 
-  const scrollBy = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 400;
-      scrollRef.current.scrollBy({
-        left: direction === 'right' ? scrollAmount : -scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
+  // const scrollBy = (direction: 'left' | 'right') => {
+  //   if (scrollRef.current) {
+  //     const scrollAmount = 400;
+  //     scrollRef.current.scrollBy({
+  //       left: direction === 'right' ? scrollAmount : -scrollAmount,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
 
   return (
     <div className="relative py-4 overflow-hidden w-full">
