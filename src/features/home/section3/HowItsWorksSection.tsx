@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Briefcase, Users, UserRound, Sparkles } from "lucide-react";
+import { Briefcase, Users, UserRound } from "lucide-react";
 
 /* -----------------------------------
    WORKFLOW DATA
@@ -113,7 +113,7 @@ export default function HowItWorksSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen py-20 px-4 md:px-8 overflow-hidden"
+      className="relative w-full min-h-screen px-4 md:px-8 overflow-hidden -mt-4"
     >
       {/* ANIMATED BACKGROUND PARTICLES - Removed, using parent background */}
 
@@ -135,14 +135,16 @@ export default function HowItWorksSection() {
       </div>
 
       {/* TITLE WITH SPARKLE EFFECT */}
-      <div className="relative text-center max-w-4xl mx-auto mb-20 z-10">
+      <div className="relative text-center max-w-4xl mx-auto mb-16 z-10">
         <div className="inline-block relative">
-          <Sparkles className="absolute -top-6 -right-6 w-8 h-8 text-yellow-400 animate-pulse" />
-          <h2 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient">
+          <h2
+                  className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3"
+                  style={{ textShadow: "0 0 30px rgba(34, 211, 238, 0.6)" }}
+                >
             How HireVerse Works
           </h2>
         </div>
-        <p className="text-blue-200 text-lg md:text-xl mt-6 max-w-2xl mx-auto">
+        <p className="text-cyan-300 text-base sm:text-lg">
           A connected workflow powering Employers, HR Partners & Candidates in perfect harmony.
         </p>
       </div>

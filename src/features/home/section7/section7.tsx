@@ -9,9 +9,9 @@ export default function Section7() {
   const navigate = useNavigate();
 
   return (
-    <section aria-labelledby="why-hireverse" className="w-full py-16">
+    <section aria-labelledby="why-hireverse" className="w-full py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="text-center mb-14">
         <h2
           className="
             text-4xl md:text-5xl font-bold text-white mb-3

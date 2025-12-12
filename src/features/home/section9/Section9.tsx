@@ -55,7 +55,7 @@ export default function Section9() {
   };
 
   return (
-    <section className="py-10 px-4">
+    <section className="px-4 -mt-2">
       <div className="max-w-3xl mx-auto">
         {/* HEADER */}
         <div className="text-center mb-14">

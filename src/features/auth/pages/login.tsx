@@ -45,8 +45,8 @@ export default function Login() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-        <p className="text-muted-foreground">Sign in to your HireVerse account</p>
+        <h1 className="text-4xl font-bold text-white">Welcome Back</h1>
+        <p className="text-blue-300/80 text-sm">Sign in to your HireVerse account</p>
       </div>
 
       <form onSubmit={handleLogin} className="space-y-4">
@@ -135,7 +135,7 @@ export default function Login() {
           <div className="w-full border-t border-border"></div>
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="px-2 bg-background text-muted-foreground">Or continue with</span>
+          <span className="px-3 bg-gradient-to-br from-slate-950 via-blue-950 to-black text-xs uppercase text-slate-500 tracking-wider">Or continue with</span>
         </div>
       </div>
 

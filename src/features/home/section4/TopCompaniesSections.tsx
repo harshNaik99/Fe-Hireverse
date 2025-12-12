@@ -83,7 +83,7 @@ export default function TopCompanies() {
     <section
       
     >
-      <div className="text-center mb-12">
+      <div className="text-center -mb-4 py-18">
         <h2
           className="
             text-4xl md:text-5xl font-bold text-white mb-3

@@ -28,15 +28,18 @@ const roles = [
 
 export default function RoleSection() {
   return (
-    <section className="w-full py-28 px-6 md:px-20">
+    <section className="w-full py-20 px-6 md:px-20">
       <div className="max-w-[1200px] mx-auto text-center">
 
         {/* Apple Title */}
-        <h2 className="text-white font-extrabold text-[46px] tracking-tight">
-          Who Are You?
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3"
+          style={{ textShadow: "0 0 30px rgba(34, 211, 238, 0.6)" }}
+        >
+                    Who Are You?
         </h2>
 
-        <p className="mt-4 text-[20px] text-blue-200">
+        <p className="text-cyan-300 text-base sm:text-lg">
           Choose your path and get started instantly on HireVerse.
         </p>
 
@@ -176,9 +179,9 @@ function AppleCard({ role }: any) {
             <Icon className="w-10 h-10 text-white" />
           </div>
 
-          <h3 className="text-white text-[26px] font-semibold tracking-tight mb-3">
+          <h2 className="text-white text-[26px] font-semibold tracking-tight mb-3">
             {role.title}
-          </h3>
+          </h2>
 
           <p className="text-white/80 text-[17px] leading-relaxed">
             {role.description}

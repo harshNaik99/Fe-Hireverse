@@ -78,7 +78,7 @@ export default function Section8 () {
   return (
     <section
       ref={sectionRef}
-       className="relative w-full py-16 overflow-hidden"
+       className="relative w-full py-16 overflow-hidden -mt-12"
 
     >
       {/* Background Decorations */}
@@ -118,7 +118,7 @@ export default function Section8 () {
           animate={isVisible ? "visible" : "hidden"}
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}

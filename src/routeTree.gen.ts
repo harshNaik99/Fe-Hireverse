@@ -46,7 +46,7 @@ const JobsIndexRoute = JobsIndexRouteImport.update({
   id: '/jobs/',
   path: '/jobs/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/jobs/index.lazy').then((d) => d.Route))
 const CompanyIndexRoute = CompanyIndexRouteImport.update({
   id: '/company/',
   path: '/company/',

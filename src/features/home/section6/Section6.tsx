@@ -8,9 +8,9 @@ import { recruiters } from "../../../lib/recruiters";
 
 export default function Section6() {
   return (
-    <section className="w-full py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-8">
+    <section className="w-full">
+      <div className="max-w-6xl mx-auto px-4 ">
+        <div className="text-center mb-14">
         <h2
           className="
             text-4xl md:text-5xl font-bold text-white mb-3
