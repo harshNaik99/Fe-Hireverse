@@ -8,7 +8,6 @@ import useJobCardFeatured from "./useJobCardFeatured"
 import { containerVariants, itemVariants } from "./consts"
 
 
-
 export default function JobCardFeatured({
   jobs,
   onJobSelect,
@@ -22,6 +21,7 @@ export default function JobCardFeatured({
     emptyMessage,
     gridCols,
   } = useJobCardFeatured(jobs, isLoading)
+
 
   /** ============= LOADING ============= **/
   if (isLoading) {

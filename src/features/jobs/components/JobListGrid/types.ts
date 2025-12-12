@@ -1,4 +1,4 @@
-import type { Job } from "../../../home/components/jobCardFeatured/types";
+import type { Job } from "../../../../types/job.types";
 
 export interface JobListGridProps {
   jobs?: Job[] | undefined;

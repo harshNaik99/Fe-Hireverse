@@ -2,7 +2,23 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { fetchJobList } from "../../../api/jobs.api"
-import type { JobListParams } from "./useJobList"
+
+export type JobListParams = {
+  page?: number
+  limit?: number
+  query?: string
+  location?: string
+  skills?: string
+  jobType?: string
+  workMode?: string
+  companyId?: string
+  applyType?: string
+  experienceLevel?: string
+  sort?: string
+  minSalary? : number
+  maxSalary? : number
+}
+
 
 export function useInfiniteJobList(params?: JobListParams) {
   // ⭐ NORMALIZED FILTERS WITHOUT PAGE/limit

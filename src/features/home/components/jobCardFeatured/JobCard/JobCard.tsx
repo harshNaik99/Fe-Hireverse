@@ -4,7 +4,7 @@ import {  MapPin, Clock, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "../../../../../components/ui/card"
 import { Badge } from "../../../../../components/ui/badge"
 import { useJobCard } from "./useJobCard"
-import type { Job } from "./types"
+import type { Job } from "../../../../../types/job.types"
 import { APPLY_NOW_TEXT, FEATURED_TEXT, VIEW_DETAILS_TEXT } from "./consts"
 
 export default function JobCard({

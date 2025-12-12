@@ -24,6 +24,8 @@ import JobCardFeatured from "../components/jobCardFeatured/JobCardFeatured";
 import { HERO_STATS, HERO_TAGLINE, JOBS_PAGE_URL } from "./const";
 import { Link } from "@tanstack/react-router";
 import FilterTags from "../components/FilterTags/FilterTags";
+import JobDetailsPanel from "../components/jobCardFeatured/JobDetailsPanel/JobDetailsPanel";
+import { useJobDetailsPanel } from "../../home/components/jobCardFeatured/JobDetailsPanel/useJobDetailsPanel";
 
 
 export default function HeroSection() {
@@ -36,11 +38,11 @@ export default function HeroSection() {
     setQuery,
     debouncedQuery,
     setLocation,
-    handleJobSelect,
     location,
   } = useHeroSection();
 
   const { data: featuredJobs, isLoading, isError } = useFeaturedJobs();
+  const { job, isOpen, openPanel, closePanel } = useJobDetailsPanel();
 
   const { data: suggest } = useJobSearchSuggest(query);
 
@@ -299,16 +301,11 @@ export default function HeroSection() {
 
               <JobCardFeatured
                 jobs={featuredJobs}
-                onJobSelect={handleJobSelect}
+                onJobSelect={openPanel}
               />
 
-            {/* <JobDetailsPanel
-              job={selectedJob}
-              isOpen={isPanelOpen}
-              onClose={() => setIsPanelOpen(false)}
-              onSave={(id) => console.log("Save job", id)}
-              onApply={(id) => console.log("Apply job", id)}
-            /> */}
+              <JobDetailsPanel job={job} open={isOpen} onClose={closePanel} />
+
 
             <footer className="text-center mt-8 lg:mt-12">
               <div

@@ -1,7 +1,8 @@
 // useJobCardFeatured.ts
 "use client"
 
-import type { Job, UseJobCardFeaturedResult } from "./types"
+import type {  UseJobCardFeaturedResult } from "./types"
+import { type Job } from "../../../../types/job.types"
 import {
   FEATURED_GRID_COLS,
   SHIMMER_COUNT,

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
 import { useDebounce } from "use-debounce";
-import type {  Job, JobSelectHandler, SearchParams, UseHeroSectionReturn } from "./types";
+import type {  JobSelectHandler, SearchParams, UseHeroSectionReturn } from "./types";
+import {type Job} from "../../../types/job.types"
 
 export function useHeroSection() : UseHeroSectionReturn {
   const [query, setQuery] = useState<string>("");
@@ -49,6 +50,6 @@ export function useHeroSection() : UseHeroSectionReturn {
     setShowSuggest,
     query,
     setIsPanelOpen,
-    location
+    location,
   }
 }

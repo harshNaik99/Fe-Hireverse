@@ -2,7 +2,8 @@
 
 import React from "react"
 import { BRAND_COLORS, DATE_LABEL_RECENT, DATE_LABEL_TODAY, DATE_LABEL_YESTERDAY, DEFAULT_JOB_TYPE, DEFAULT_WORK_MODE, NO_SALARY_TEXT, PLACEHOLDER_LOGO, UNKNOWN_COMPANY } from "./consts"
-import type { Job, UseJobCardResult } from "./types"
+import type { UseJobCardResult } from "./types"
+import {type Job} from "../../../../../types/job.types"
 
 
 // --- Helper: initials ---
@@ -53,7 +54,6 @@ export function useJobCard(job: Job) : UseJobCardResult {
   const companyName =
     job.companyName ||
     job.companyId?.name ||
-    job.company ||
     job.postedBy?.name ||
     UNKNOWN_COMPANY
 
@@ -69,7 +69,7 @@ export function useJobCard(job: Job) : UseJobCardResult {
     ? `${job.salaryCurrency || "INR"} ${job.minSalary.toLocaleString()} - ${job.maxSalary.toLocaleString()}`
     : NO_SALARY_TEXT
 
-  const typeText = job.jobType?.replace("_", "-") || job.type || DEFAULT_JOB_TYPE
+  const typeText = job.jobType?.replace("_", "-") || DEFAULT_JOB_TYPE
 
   const locationText = job.location || job.workMode || DEFAULT_WORK_MODE
   const postedTime = formatTimeAgo(

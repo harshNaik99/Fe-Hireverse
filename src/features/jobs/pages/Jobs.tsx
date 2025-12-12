@@ -6,9 +6,15 @@ import { useInfiniteJobList } from "../hooks/useInfiniteJobList"
 import JobsFilterHeader from "../components/FilterHeader/JobsFilterHeader"
 import FilterSidebar from "../components/FilterSidebar/FilterSidebar"
 import JobListGrid from "../components/JobListGrid/JobListGrid"
+import { useJobDetailsPanel } from "../../../features/home/components/jobCardFeatured/JobDetailsPanel/useJobDetailsPanel"
+// JobsPage.tsx (top)
+
 
 export default function JobsPage() {
   const search = useSearch({ from: "/jobs/" })
+
+  const {  openPanel } = useJobDetailsPanel();
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -44,6 +50,7 @@ export default function JobsPage() {
     minSalary: search.minSalary,
     maxSalary: search.maxSalary,
   })
+
 
   const jobs =
     data?.pages.flatMap((p: any) =>
@@ -86,6 +93,7 @@ export default function JobsPage() {
             <JobListGrid
               jobs={jobs}
               isLoading={isLoading && jobs.length === 0}
+              onJobSelect={openPanel}
             />
 
             <div ref={bottomRef} className="h-2" />

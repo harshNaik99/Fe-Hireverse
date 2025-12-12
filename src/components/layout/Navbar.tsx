@@ -67,7 +67,7 @@ const showSearch = currentPath.startsWith("/jobs");
       {/* ========================= NAVBAR ========================= */}
       <nav
         className="
-          sticky top-0 z-50 w-full
+          sticky top-0 z-40 w-full
           backdrop-blur-xl bg-white/90 border-b border-gray-200 shadow-md
         "
       >

@@ -1,6 +1,6 @@
 "use client"
 
-import type { Job } from "../../../home/components/jobCardFeatured/types";
+import type { Job } from "../../../../types/job.types";
 import type { UseJobListGridResult } from "./types"
 import {
   SHIMMER_COUNT,
@@ -10,10 +10,9 @@ import {
 
 export default function useJobListGrid(
   jobs: Job[] | undefined,
-  isLoading?: boolean
+  isLoading?: boolean,
 ): UseJobListGridResult {
   const hasJobs = !isLoading && Array.isArray(jobs) && jobs.length > 0
-
   return {
     hasJobs,
     shimmerCount: SHIMMER_COUNT,

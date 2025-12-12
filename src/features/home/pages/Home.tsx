@@ -1,5 +1,5 @@
 import RoleSection from "../section2/RoleSection";
-import HeroSection from "../section1/HeroSection";
+import HeroSection from "../HeroSection/HeroSection";
 import HowItWorksSection from "../HowItsWorksSection";
 import TopCompaniesSection from "../section4/TopCompaniesSections";
 import PopularCategories from "../section5/PopularCategories";
@@ -11,9 +11,7 @@ import Section9 from "../section9/Section9";
 export default function Home() {
   return (
     <div
-  className="
-    relative w-full min-h-screen text-white 
-    snap-y snap-mandatory
+  className=" w-full min-h-screen text-white 
     bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 -mt-30
   "
 >
