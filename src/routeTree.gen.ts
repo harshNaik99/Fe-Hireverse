@@ -8,6 +8,8 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteRouteImport } from './routes/auth/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,8 +21,15 @@ import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as RecruiterIdRouteImport } from './routes/recruiter/$id'
 import { Route as JobsIdRouteImport } from './routes/jobs/$id'
 import { Route as CompanyIdRouteImport } from './routes/company/$id'
-import { Route as AuthRegisterRouteImport } from './routes/auth/register'
-import { Route as AuthLoginRouteImport } from './routes/auth/login'
+
+const AuthRegisterLazyRouteImport = createFileRoute('/auth/register')()
+const AuthLoginLazyRouteImport = createFileRoute('/auth/login')()
+const AuthResetPasswordLazyRouteImport = createFileRoute(
+  '/auth/ResetPassword',
+)()
+const AuthForgotPasswordLazyRouteImport = createFileRoute(
+  '/auth/ForgotPassword',
+)()
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: '/auth',
@@ -57,6 +66,30 @@ const BlogsIndexRoute = BlogsIndexRouteImport.update({
   path: '/blogs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRegisterLazyRoute = AuthRegisterLazyRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => AuthRouteRoute,
+} as any).lazy(() => import('./routes/auth/register.lazy').then((d) => d.Route))
+const AuthLoginLazyRoute = AuthLoginLazyRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AuthRouteRoute,
+} as any).lazy(() => import('./routes/auth/login.lazy').then((d) => d.Route))
+const AuthResetPasswordLazyRoute = AuthResetPasswordLazyRouteImport.update({
+  id: '/ResetPassword',
+  path: '/ResetPassword',
+  getParentRoute: () => AuthRouteRoute,
+} as any).lazy(() =>
+  import('./routes/auth/ResetPassword.lazy').then((d) => d.Route),
+)
+const AuthForgotPasswordLazyRoute = AuthForgotPasswordLazyRouteImport.update({
+  id: '/ForgotPassword',
+  path: '/ForgotPassword',
+  getParentRoute: () => AuthRouteRoute,
+} as any).lazy(() =>
+  import('./routes/auth/ForgotPassword.lazy').then((d) => d.Route),
+)
 const RecruiterIdRoute = RecruiterIdRouteImport.update({
   id: '/recruiter/$id',
   path: '/recruiter/$id',
@@ -72,25 +105,17 @@ const CompanyIdRoute = CompanyIdRouteImport.update({
   path: '/company/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRegisterRoute = AuthRegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => AuthRouteRoute,
-} as any)
-const AuthLoginRoute = AuthLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => AuthRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
-  '/auth/login': typeof AuthLoginRoute
-  '/auth/register': typeof AuthRegisterRoute
   '/company/$id': typeof CompanyIdRoute
   '/jobs/$id': typeof JobsIdRoute
   '/recruiter/$id': typeof RecruiterIdRoute
+  '/auth/ForgotPassword': typeof AuthForgotPasswordLazyRoute
+  '/auth/ResetPassword': typeof AuthResetPasswordLazyRoute
+  '/auth/login': typeof AuthLoginLazyRoute
+  '/auth/register': typeof AuthRegisterLazyRoute
   '/blogs': typeof BlogsIndexRoute
   '/company': typeof CompanyIndexRoute
   '/jobs': typeof JobsIndexRoute
@@ -100,11 +125,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
-  '/auth/login': typeof AuthLoginRoute
-  '/auth/register': typeof AuthRegisterRoute
   '/company/$id': typeof CompanyIdRoute
   '/jobs/$id': typeof JobsIdRoute
   '/recruiter/$id': typeof RecruiterIdRoute
+  '/auth/ForgotPassword': typeof AuthForgotPasswordLazyRoute
+  '/auth/ResetPassword': typeof AuthResetPasswordLazyRoute
+  '/auth/login': typeof AuthLoginLazyRoute
+  '/auth/register': typeof AuthRegisterLazyRoute
   '/blogs': typeof BlogsIndexRoute
   '/company': typeof CompanyIndexRoute
   '/jobs': typeof JobsIndexRoute
@@ -115,11 +142,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
-  '/auth/login': typeof AuthLoginRoute
-  '/auth/register': typeof AuthRegisterRoute
   '/company/$id': typeof CompanyIdRoute
   '/jobs/$id': typeof JobsIdRoute
   '/recruiter/$id': typeof RecruiterIdRoute
+  '/auth/ForgotPassword': typeof AuthForgotPasswordLazyRoute
+  '/auth/ResetPassword': typeof AuthResetPasswordLazyRoute
+  '/auth/login': typeof AuthLoginLazyRoute
+  '/auth/register': typeof AuthRegisterLazyRoute
   '/blogs/': typeof BlogsIndexRoute
   '/company/': typeof CompanyIndexRoute
   '/jobs/': typeof JobsIndexRoute
@@ -131,11 +160,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
-    | '/auth/login'
-    | '/auth/register'
     | '/company/$id'
     | '/jobs/$id'
     | '/recruiter/$id'
+    | '/auth/ForgotPassword'
+    | '/auth/ResetPassword'
+    | '/auth/login'
+    | '/auth/register'
     | '/blogs'
     | '/company'
     | '/jobs'
@@ -145,11 +176,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
-    | '/auth/login'
-    | '/auth/register'
     | '/company/$id'
     | '/jobs/$id'
     | '/recruiter/$id'
+    | '/auth/ForgotPassword'
+    | '/auth/ResetPassword'
+    | '/auth/login'
+    | '/auth/register'
     | '/blogs'
     | '/company'
     | '/jobs'
@@ -159,11 +192,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/auth'
-    | '/auth/login'
-    | '/auth/register'
     | '/company/$id'
     | '/jobs/$id'
     | '/recruiter/$id'
+    | '/auth/ForgotPassword'
+    | '/auth/ResetPassword'
+    | '/auth/login'
+    | '/auth/register'
     | '/blogs/'
     | '/company/'
     | '/jobs/'
@@ -235,6 +270,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterLazyRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginLazyRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/auth/ResetPassword': {
+      id: '/auth/ResetPassword'
+      path: '/ResetPassword'
+      fullPath: '/auth/ResetPassword'
+      preLoaderRoute: typeof AuthResetPasswordLazyRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/auth/ForgotPassword': {
+      id: '/auth/ForgotPassword'
+      path: '/ForgotPassword'
+      fullPath: '/auth/ForgotPassword'
+      preLoaderRoute: typeof AuthForgotPasswordLazyRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
     '/recruiter/$id': {
       id: '/recruiter/$id'
       path: '/recruiter/$id'
@@ -256,31 +319,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompanyIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth/register': {
-      id: '/auth/register'
-      path: '/register'
-      fullPath: '/auth/register'
-      preLoaderRoute: typeof AuthRegisterRouteImport
-      parentRoute: typeof AuthRouteRoute
-    }
-    '/auth/login': {
-      id: '/auth/login'
-      path: '/login'
-      fullPath: '/auth/login'
-      preLoaderRoute: typeof AuthLoginRouteImport
-      parentRoute: typeof AuthRouteRoute
-    }
   }
 }
 
 interface AuthRouteRouteChildren {
-  AuthLoginRoute: typeof AuthLoginRoute
-  AuthRegisterRoute: typeof AuthRegisterRoute
+  AuthForgotPasswordLazyRoute: typeof AuthForgotPasswordLazyRoute
+  AuthResetPasswordLazyRoute: typeof AuthResetPasswordLazyRoute
+  AuthLoginLazyRoute: typeof AuthLoginLazyRoute
+  AuthRegisterLazyRoute: typeof AuthRegisterLazyRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
-  AuthLoginRoute: AuthLoginRoute,
-  AuthRegisterRoute: AuthRegisterRoute,
+  AuthForgotPasswordLazyRoute: AuthForgotPasswordLazyRoute,
+  AuthResetPasswordLazyRoute: AuthResetPasswordLazyRoute,
+  AuthLoginLazyRoute: AuthLoginLazyRoute,
+  AuthRegisterLazyRoute: AuthRegisterLazyRoute,
 }
 
 const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(

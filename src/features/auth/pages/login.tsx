@@ -5,12 +5,14 @@ import { router } from "../../../main"
 import { motion, type Variants } from "framer-motion"
 import { Mail, Lock, Eye, EyeOff } from "lucide-react"
 import  { useLogin } from "../hooks/useLogin"
+import { useNavigate } from "@tanstack/react-router"
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const navigate = useNavigate();
   const { mutate: login, isPending } = useLogin();
 
   const handleLogin = (e: React.FormEvent) => {
@@ -99,9 +101,14 @@ export default function Login() {
             <input type="checkbox" className="w-4 h-4 rounded border-border bg-input accent-primary" />
             <span className="text-muted-foreground">Remember me</span>
           </label>
-          <button type="button" className="text-blue-500 hover:text-accent transition-colors">
+          <button
+            type="button"
+            className="text-blue-500 hover:text-accent transition-colors"
+            onClick={() => navigate({ to: "/auth/ForgotPassword" })}
+          >
             Forgot password?
           </button>
+
         </div>
 
         {/* Submit Button */}

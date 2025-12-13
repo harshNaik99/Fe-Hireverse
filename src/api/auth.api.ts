@@ -8,6 +8,25 @@ export const registerAPI = async (payload: any) => {
   return response.data.RESULT;
 };
 
+// Forgot Password
+export const forgotPasswordAPI = async (payload: { email: string }) => {
+  const response = await api.post("/user/forgotpassword", payload);
+  // your backend structure: { RESULT: { MESSAGE, STATUS, ... } }
+  return response.data.RESULT;
+};
+
+// Add this to src/api/auth.api.ts
+export const resetPasswordAPI = async (payload: {
+  email: string;
+  token: string;
+  newPassword: string;
+}) => {
+  const response = await api.post("/user/resetpassword", payload);
+  return response.data.RESULT;
+};
+
+
+
 export const loginAPI = async (payload: any) => {
   const response = await api.post("/user/login", payload);
   const { user, accessToken } = response.data.RESULT;
@@ -19,6 +38,8 @@ export const loginAPI = async (payload: any) => {
 
   return { user, accessToken };
 };
+
+
 
 export const profileAPI = () => 
   api.get("/user/profile").then((r) => r.data.RESULT);
